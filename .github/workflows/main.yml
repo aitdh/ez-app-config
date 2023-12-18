@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: azure/appconfiguration-sync@v1
         with:
-          configurationFile: 'appsettings.json'
+          configurationFile: '../configurations/epic-settings.json'
           format: 'json'
           # Replace <ConnectionString> with the name of the secret in your repository
           connectionString: ${{ secrets.ConfigConnection }}
