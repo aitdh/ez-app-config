@@ -3,7 +3,7 @@ on:
     branches:
       - 'main'
     paths:
-      - './configurations/epic-settings.json'
+      - 'configurations/epic-settings.json'
 
 jobs:
   syncconfig:
