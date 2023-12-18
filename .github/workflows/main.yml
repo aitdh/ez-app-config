@@ -1,9 +1,10 @@
 on:
   push:
-    branches:
-      - main
     paths:
       - 'configurations/**.json'
+    branches:
+      - main
+    
 
 jobs:
   syncconfig:
