@@ -8,6 +8,8 @@ jobs:
   syncconfig:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
+
     - name: Azure Login action
       uses: azure/login@v2
       with:
@@ -20,8 +22,6 @@ jobs:
         inlineScript: |
           az appconfig kv export -n ez-app-config -d file --path remote.json --format json --yes
 
-    - uses: actions/checkout@v4
-    
     - name: Compare File
       run: |
         pwd
