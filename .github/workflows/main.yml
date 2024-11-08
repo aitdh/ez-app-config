@@ -6,7 +6,7 @@ on:
 
 jobs:
   syncconfig:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - name: Azure Login action
       uses: azure/login@v2
@@ -18,5 +18,4 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          diff --help
-          jq --help
+          pwd
