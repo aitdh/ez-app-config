@@ -30,5 +30,13 @@ jobs:
         jq -S . remote.json > remote_sorted.json
         jq -S . configurations/config.json > config.sorted.json
         diff --side-by-side remote_sorted.json config.sorted.json && echo "no difference" || echo "differences!"
+
+    - name: Azure CLI script
+      environment: test
+      uses: azure/cli@v2
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az appconfig kv export -n ez-app-config -d file --path remote.json --format json --yes
       
 
