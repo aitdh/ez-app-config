@@ -23,7 +23,6 @@ jobs:
           az appconfig kv export -n ez-app-config -d file --path remote.json --format json --yes
 
     - name: Compare File
-      continue-on-error: true
       run: |
         pwd
         ls -la
@@ -35,7 +34,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: test
     needs: syncconfig
-    steps:  
+    steps: 
+    - name: Compare File
+      run: |
+        pwd
+        ls -la
+
     - name: Azure CLI script
       uses: azure/cli@v2
       with:
