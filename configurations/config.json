@@ -8,5 +8,6 @@
     "Body:Title": "Hello World!",
     "Body:Content": "This is a test content.",
     "Session:Timeout": "30",
-    "Node:Version":"32.3.4"
+    "Node:Version":"32.3.4",
+    "Decode:App":"True"
 }
