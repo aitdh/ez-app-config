@@ -10,12 +10,7 @@ jobs:
   syncconfig:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: azure/appconfiguration-sync@v1
-        with:
-          configurationFile: 'configurations/**.json'
-          format: 'json'
-          # Replace <ConnectionString> with the name of the secret in your repository
-          connectionString: ${{ secrets.ConfigConnection }}
-          separator: ':'
-          strict: true 
+    - name: Azure Login action
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
