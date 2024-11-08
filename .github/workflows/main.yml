@@ -31,8 +31,11 @@ jobs:
         jq -S . configurations/config.json > config.sorted.json
         diff --side-by-side remote_sorted.json config.sorted.json && echo "no difference" || echo "differences!"
 
+  applyConfig:
+    runs-on: ubuntu-latest
+    environment: test
+    steps:  
     - name: Azure CLI script
-      environment: test
       uses: azure/cli@v2
       with:
         azcliversion: latest
