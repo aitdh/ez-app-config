@@ -1,7 +1,5 @@
 on:
   push:
-    paths:
-      - 'configurations/**.json'
     branches:
       - main
     
