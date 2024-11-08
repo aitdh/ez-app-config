@@ -35,16 +35,18 @@ jobs:
     environment: test
     needs: syncconfig
     steps: 
-    - name: Compare File
-      run: |
-        pwd
-        ls -la
+    - uses: actions/checkout@v4
+    
+    - name: Azure Login action
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Azure CLI script
       uses: azure/cli@v2
       with:
         azcliversion: latest
         inlineScript: |
-          az appconfig kv export -n ez-app-config -d file --path remote.json --format json --yes
+          az appconfig kv import -n ez-app-config -d file --path configurations/config.json --format json --yes
       
 
