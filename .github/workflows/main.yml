@@ -27,5 +27,6 @@ jobs:
         pwd
         ls -la
         jq -S . remote.json > remote_sorted.json
-        cat remote_sorted.json
+        jq -S . configurations/config.json > config.sorted.json
+        diff remote_sorted.json config.sorted.json
 
