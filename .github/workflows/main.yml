@@ -24,6 +24,6 @@ jobs:
       run: |
         pwd
         ls -la
-        diff --help
-        jq --help
-        
+        jq -S . remote.json > remote_sorted.json
+        cat remote_sorted.json
+
