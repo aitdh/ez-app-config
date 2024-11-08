@@ -47,6 +47,6 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          az appconfig kv import -n ez-app-config -d file --path configurations/config.json --format json --yes
+          az appconfig kv import -n ez-app-config -s file --path configurations/config.json --format json --yes
       
 
