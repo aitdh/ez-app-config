@@ -23,11 +23,12 @@ jobs:
           az appconfig kv export -n ez-app-config -d file --path remote.json --format json --yes
 
     - name: Compare File
+      continue-on-error: true
       run: |
         pwd
         ls -la
         jq -S . remote.json > remote_sorted.json
         jq -S . configurations/config.json > config.sorted.json
         diff --side-by-side remote_sorted.json config.sorted.json
-      continue-on-error: true
+      
 
