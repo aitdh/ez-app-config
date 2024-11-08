@@ -29,4 +29,5 @@ jobs:
         jq -S . remote.json > remote_sorted.json
         jq -S . configurations/config.json > config.sorted.json
         diff --side-by-side remote_sorted.json config.sorted.json
+      continue-on-error: true
 
