@@ -18,4 +18,4 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          az appconfig list --help
+          az appconfig list
