@@ -21,7 +21,7 @@ jobs:
           az appconfig kv export -n ez-app-config -d file --path remote.json --format json --yes
 
     - name: Compare File
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       run: |
         pwd
         ls -la
