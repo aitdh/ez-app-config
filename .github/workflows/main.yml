@@ -18,4 +18,8 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          pwd
+          az appconfig kv export -n ez-app-config -d file --path remote.json --format json
+
+    - name: Compare File
+      run: |
+        pwd
