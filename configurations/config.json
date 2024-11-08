@@ -1,5 +1,5 @@
 {
-    "Group1:Parent": "I am Parent",
+    "Group1:Parent": "Parent",
     "Group1:Parent:Child1": "Child One",
     "Group1:Parent:Child2": "Child Two",
     "Logging:LogLevel:Default": "Verbose",
