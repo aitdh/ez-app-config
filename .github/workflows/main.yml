@@ -24,3 +24,6 @@ jobs:
       run: |
         pwd
         ls -la
+        diff --help
+        jq --help
+        
