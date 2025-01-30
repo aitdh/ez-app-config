@@ -10,5 +10,5 @@
     "Session:Timeout": "30",
     "Node:Version":"32.3.6",
     "Decode:App":"True",
-    "Email:Template":"Billing001"
+    "Body:Font": "Time Romes"
 }
