@@ -5,7 +5,7 @@
     "Logging:LogLevel:Default": "Verbose",
     "Application:Name": "MyApp",
     "Application:Version": "1.0.0",
-    "Body:Title": "Hello World!",
+    "Body:Title": "Hello World!!",
     "Body:Content": "This is a test content.",
     "Session:Timeout": "30",
     "Node:Version":"32.3.6",

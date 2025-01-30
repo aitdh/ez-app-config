@@ -29,7 +29,7 @@ jobs:
         if [ -e remote.json ]; then 
           jq -S . remote.json > remote_sorted.json
           jq -S . configurations/config.json > config.sorted.json
-          diff -u remote_sorted.json config.sorted.json && echo -e "no difference" || echo "differences"
+          diff -u remote_sorted.json config.sorted.json && echo -e "No changes were found." || echo "Found some new changes."
         else 
           echo "Nothing To Compare..." 
         fi
