@@ -26,7 +26,7 @@ jobs:
       run: |
         pwd
         ls -la
-        if [ -e remote.json]; then 
+        if [ -e remote.json ]; then 
           jq -S . remote.json > remote_sorted.json
           jq -S . configurations/config.json > config.sorted.json
           diff --side-by-side remote_sorted.json config.sorted.json && echo -e "\033[0;32mno difference" || echo "\033[0;31mdifferences!"
