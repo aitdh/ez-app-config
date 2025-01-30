@@ -31,7 +31,7 @@ jobs:
           jq -S . configurations/config.json > config.sorted.json
           diff --side-by-side remote_sorted.json config.sorted.json && echo -e "\033[0;32mno difference" || echo "\033[0;31mdifferences!"
         else 
-          echo "File does not exist." 
+          echo "Nothing To Compare..." 
         fi
 
   applyConfig:
@@ -46,11 +46,11 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Azure CLI script
+    - name: Update Config
       uses: azure/cli@v2
       with:
         azcliversion: latest
         inlineScript: |
-          az appconfig kv import -n ez-app-config -s file --path configurations/config.json --format json --strict true --yes
+          az appconfig kv import -n ez-app-config -s file --path configurations/config.json --prefix AppOne: --format json --strict true --yes
       
 
