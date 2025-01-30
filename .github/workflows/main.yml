@@ -24,8 +24,6 @@ jobs:
 
     - name: Compare Config
       run: |
-        pwd
-        ls -la
         if [ -e remote.json ]; then 
           jq -S . remote.json > remote_sorted.json
           jq -S . configurations/config.json > config.sorted.json
@@ -73,8 +71,6 @@ jobs:
 
     - name: Compare Config
       run: |
-        pwd
-        ls -la
         if [ -e remoteSecrets.json ]; then 
           jq -S . remoteSecrets.json > remoteSecrets_sorted.json
           jq -S . configurations/secrets.json > secrets.sorted.json
