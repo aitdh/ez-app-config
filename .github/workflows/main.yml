@@ -22,7 +22,7 @@ jobs:
         inlineScript: |
           az appconfig kv export -n ez-app-config -d file --path remote.json --prefix AppOne: --label Config --format json --yes
 
-    - name: Compare File
+    - name: Compare Config
       run: |
         pwd
         ls -la
@@ -52,5 +52,53 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az appconfig kv import -n ez-app-config -s file --path configurations/config.json --prefix AppOne: --label Config --format json --strict true --yes
-      
+    
+  syncSecrets:
+    runs-on: ubuntu-latest
+    needs: applyConfig
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Azure Login action
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Azure CLI script
+      uses: azure/cli@v2
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az appconfig kv export -n ez-app-config -d file --path remoteSecrets.json --prefix AppOne: --label Secret --format json --yes
+
+    - name: Compare Config
+      run: |
+        pwd
+        ls -la
+        if [ -e remoteSecrets.json ]; then 
+          jq -S . remoteSecrets.json > remoteSecrets_sorted.json
+          jq -S . configurations/secrets.json > secrets.sorted.json
+          diff --side-by-side remoteSecrets_sorted.json secrets.sorted.json && echo -e "No changes were found." || echo "Found some changes."
+        else 
+          echo "Nothing To Compare..." 
+        fi
+
+  applySectets:
+    runs-on: ubuntu-latest
+    environment: test
+    needs: syncSecrets
+    steps: 
+    - uses: actions/checkout@v4
+    
+    - name: Azure Login action
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Update Config
+      uses: azure/cli@v2
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az appconfig kv import -n ez-app-config -s file --path configurations/secrets.json --prefix AppOne: --label Secret --format json --content-type "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8" --strict true --yes
 
