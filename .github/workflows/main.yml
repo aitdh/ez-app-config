@@ -20,7 +20,7 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          az appconfig kv export -n ez-app-config -d file --path remote.json --format json --yes
+          az appconfig kv export -n ez-app-config -d file --path remote.json --prefix AppOne: --label Config --format json --yes
 
     - name: Compare File
       run: |
@@ -51,6 +51,6 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          az appconfig kv import -n ez-app-config -s file --path configurations/config.json --prefix AppOne: --format json --strict true --yes
+          az appconfig kv import -n ez-app-config -s file --path configurations/config.json --prefix AppOne: --label Config --format json --strict true --yes
       
 
