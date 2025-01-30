@@ -6,8 +6,7 @@
     "Application:Name": "MyApp",
     "Application:Version": "1.0.0",
     "Body:Title": "Hello World!!",
-    "Body:Content": "This is a test content.",
-    "Session:Timeout": "30",
+    "Body:Content": "This is a test content!!!!!",
     "Node:Version":"32.3.6",
     "Decode:App":"True",
     "Body:Font": "Time Romes"
