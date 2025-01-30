@@ -78,7 +78,7 @@ jobs:
         if [ -e remoteSecrets.json ]; then 
           jq -S . remoteSecrets.json > remoteSecrets_sorted.json
           jq -S . configurations/secrets.json > secrets.sorted.json
-          diff --side-by-side remoteSecrets_sorted.json secrets.sorted.json && echo -e "No changes were found." || echo "Found some changes."
+          diff -u remoteSecrets_sorted.json secrets.sorted.json && echo -e "No changes were found." || echo "Found some changes."
         else 
           echo "Nothing To Compare..." 
         fi
