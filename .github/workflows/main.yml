@@ -20,17 +20,19 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          if [ -e remote.json]; then echo "File exists." else echo "File does not exist." fi
           az appconfig kv export -n ez-app-config -d file --path remote.json --format json --yes
 
     - name: Compare File
       run: |
         pwd
         ls -la
-        if [ -e remote.json]; then echo "File exists." else echo "File does not exist." fi
-        jq -S . remote.json > remote_sorted.json
-        jq -S . configurations/config.json > config.sorted.json
-        diff --side-by-side remote_sorted.json config.sorted.json && echo -e "\033[0;32mno difference" || echo "\033[0;31mdifferences!"
+        if [ -e remote.json]; then 
+          jq -S . remote.json > remote_sorted.json
+          jq -S . configurations/config.json > config.sorted.json
+          diff --side-by-side remote_sorted.json config.sorted.json && echo -e "\033[0;32mno difference" || echo "\033[0;31mdifferences!"
+        else 
+          echo "File does not exist." 
+        fi
 
   applyConfig:
     runs-on: ubuntu-latest
