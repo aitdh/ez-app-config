@@ -3,7 +3,7 @@
     "Group1:Parent:Child1": "Child One",
     "Group1:Parent:Child2": "Child Two",
     "Logging:LogLevel:Default": "Verbose",
-    "Application:Name": "MyApp",
+    "Application:Name": "MyApp Alpha",
     "Application:Version": "1.0.0",
     "Body:Title": "Hello World!!",
     "Body:Content": "This is a test content!!!!!",

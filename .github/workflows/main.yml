@@ -28,7 +28,7 @@ jobs:
         if [ -e remote.json ]; then 
           jq -S . remote.json > remote_sorted.json
           jq -S . configurations/config.json > config.sorted.json
-          diff -u remote_sorted.json config.sorted.json && echo -e "No changes were found." || echo "Found some changes."
+          diff -u --color remote_sorted.json config.sorted.json && echo -e "No changes were found." || echo "Found some changes."
         else 
           echo "Nothing To Compare..." 
         fi
@@ -75,7 +75,7 @@ jobs:
         if [ -e remoteSecrets.json ]; then 
           jq -S . remoteSecrets.json > remoteSecrets_sorted.json
           jq -S . configurations/secrets.json > secrets.sorted.json
-          diff -u remoteSecrets_sorted.json secrets.sorted.json && echo -e "No changes were found." || echo "Found some changes."
+          diff -u --color remoteSecrets_sorted.json secrets.sorted.json && echo -e "No changes were found." || echo "Found some changes."
         else 
           echo "Nothing To Compare..." 
         fi
