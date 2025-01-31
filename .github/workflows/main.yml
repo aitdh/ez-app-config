@@ -24,6 +24,7 @@ jobs:
 
     - name: Compare Config
       run: |
+        echo -e "\033[32mThis is green text\033[0m"
         if [ -e remote.json ]; then 
           jq -S . remote.json > remote_sorted.json
           jq -S . configurations/config.json > config.sorted.json
